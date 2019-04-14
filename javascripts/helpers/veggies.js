@@ -1,12 +1,29 @@
-const veggiesInfo = {
-    lettuce: 1.50,
-    pickles: 1.00,
-    onions: 1.00,
-    tomato: 1.50,
+export const VEGGIES = {
+    LETTUCE: "lettuce",
+    PICKLES: "pickles",
+    ONIONS: "onions",
+    TOMATO: "tomato"
 };
 
-const getVeggies = () => {
-    return veggiesInfo;
+const info = {
+    [VEGGIES.LETTUCE]: {
+        name: VEGGIES.LETTUCE,
+        price: 1.50
+    },
+    [VEGGIES.PICKLES]: {
+        name: VEGGIES.PICKLES,
+        price: 1.00
+    },
+    [VEGGIES.ONIONS]: {
+        name: VEGGIES.ONIONS,
+        price: 1.00
+    },
+    [VEGGIES.TOMATO]: {
+        name: VEGGIES.TOMATO,
+        price: 1.50
+    }
 };
 
-export default { getVeggies };
+export default {
+    getVeggies: () => info
+};

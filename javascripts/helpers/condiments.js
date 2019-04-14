@@ -1,12 +1,29 @@
-const condimentInfo = {
-    mayonnaise: 1.50,
-    ketchup: 1.00,
-    mustard: 1.00,
-    vinegarOil: 1.50,
+export const CONDIMENTS = {
+    MAYONNAISE: "mayonnaise",
+    KETCHUP: "ketchup",
+    MUSTARD: "mustard",
+    VINEGAR_OIL: "vinegarOil"
 };
 
-const getCondiment = () => {
-    return condimentInfo;
+const info = {
+    [CONDIMENTS.MAYONNAISE]: {
+        name: CONDIMENTS.MAYONNAISE,
+        price: 1.50
+    },
+    [CONDIMENTS.KETCHUP]: {
+        name: CONDIMENTS.KETCHUP,
+        price: 1.00
+    },
+    [CONDIMENTS.MUSTARD]: {
+        name: CONDIMENTS.MUSTARD,
+        price: 1.00
+    },
+    [CONDIMENTS.VINEGAR_OIL]: {
+        name: CONDIMENTS.VINEGAR_OIL,
+        price: 1.50
+    }
 };
 
-export default { getCondiment };
+export default {
+    getCondiments: () => info
+};

@@ -1,55 +1,30 @@
 import ingredients from "./ingredients.js";
+import _bread, {BREAD} from "../helpers/bread.js";
+import _cheese, {CHEESE} from "../helpers/cheese.js";
+import _meat, {MEAT} from "../helpers/meat.js";
+import _veggies, {VEGGIES} from "../helpers/veggies.js";
+import _condiments, {CONDIMENTS} from "../helpers/condiments.js";
 
+/**
+ * Add a click event to every button for ingredients of the sandwich
+ */
+export default () => {
+    // Define a set of parameters I can bind to for each set of ingredients
+    const addClick = (fnc, object, key) => {
+        try {
+            const button = document.getElementById(object[key]);
 
+            // Use the fnc as the first parameter of addIngredient
+            // addIngredient doesn't know of the function it calls (think delegates in C#)
+            button.addEventListener('click', ingredients.addIngredient.bind(null, fnc));
+        } catch (exception) {
+            console.warn(`Button does not exist for '${key}'`)
+        }
+    };
 
-
-// grab all ingredient buttons
-// find which ingredient you clicked on
-// find the price of that ingredient
-// add to the cart
-
-const eventFunction= () => {
-const asiagoButton = document.getElementById('asiago');
-const whiteButton = document.getElementById('french');
-const pitaButton = document.getElementById('pita');
-const wheatButton = document.getElementById('wheat');
-const cheddarButton = document.getElementById('cheddar');
-const swissButton = document.getElementById('swiss');
-const americanButton = document.getElementById('american');
-const provoloneButton = document.getElementById('provolone');
-const hamButton = document.getElementById('ham');
-const baconButton = document.getElementById('bacon');
-const salamiButton = document.getElementById('salami');
-const turkeyButton = document.getElementById('turkey');
-const lettuceButton = document.getElementById('lettuce');
-const tomatoButton = document.getElementById('tomato');
-const onionButton = document.getElementById('onions');
-const pickleButton = document.getElementById('pickles');
-const mayoButton = document.getElementById('mayo');
-const mustardButton = document.getElementById('ketchup');
-const ketchupButton = document.getElementById('mustard');
-const vinegarButton = document.getElementById('vinegarOil');
-
-asiagoButton.addEventListener('click', ingredients.addIngredient);
-pitaButton.addEventListener('click', ingredients.addIngredient);
-wheatButton.addEventListener('click', ingredients.addIngredient);
-whiteButton.addEventListener('click', ingredients.addIngredient);
-cheddarButton.addEventListener('click', ingredients.addIngredient);
-swissButton.addEventListener('click', ingredients.addIngredient);
-americanButton.addEventListener('click',  ingredients.addIngredient);
-provoloneButton.addEventListener('click', ingredients.addIngredient);
-hamButton.addEventListener('click', ingredients.addIngredient);
-baconButton.addEventListener('click', ingredients.addIngredient);
-turkeyButton.addEventListener('click',  ingredients.addIngredient);
-salamiButton.addEventListener('click',  ingredients.addIngredient);
-lettuceButton.addEventListener('click',  ingredients.addIngredient);
-tomatoButton.addEventListener('click',  ingredients.addIngredient);
-onionButton.addEventListener('click',  ingredients.addIngredient);
-pickleButton.addEventListener('click',  ingredients.addIngredient);
-mayoButton.addEventListener('click',  ingredients.addIngredient);
-ketchupButton.addEventListener('click',  ingredients.addIngredient);
-mustardButton.addEventListener('click',  ingredients.addIngredient);
-vinegarButton.addEventListener('click',  ingredients.addIngredient);
-}
-
-export default { eventFunction }
+    Object.keys(BREAD).forEach(addClick.bind(null, _bread.getBread, BREAD));
+    Object.keys(CHEESE).forEach(addClick.bind(null, _cheese.getCheese, CHEESE));
+    Object.keys(MEAT).forEach(addClick.bind(null, _meat.getMeat, MEAT));
+    Object.keys(VEGGIES).forEach(addClick.bind(null, _veggies.getVeggies, VEGGIES));
+    Object.keys(CONDIMENTS).forEach(addClick.bind(null, _condiments.getCondiments, CONDIMENTS));
+};

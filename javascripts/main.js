@@ -1,7 +1,5 @@
-import eventBtn from './components/buttonEvents.js';
+import runButtonEvents from './components/buttonEvents.js';
 
-const init = () => {
-    eventBtn.eventFunction();
+window.onload = () => {
+    runButtonEvents();
 };
-
-init();
